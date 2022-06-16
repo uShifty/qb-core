@@ -8,8 +8,7 @@ AddEventHandler('chatMessage', function(_, _, message)
 end)
 
 AddEventHandler('playerDropped', function(reason)
-    CreateThread(function()
-        Wait(10000)
+    SetTimeout(10000, function()
         local src = source
         if not QBCore.Players[src] then return end
         local Player = QBCore.Players[src]
@@ -17,7 +16,7 @@ AddEventHandler('playerDropped', function(reason)
         Player.Functions.Save()
         QBCore.Player_Buckets[Player.PlayerData.license] = nil
         QBCore.Players[src] = nil
-    end) 
+    end)
 end)
 
 
